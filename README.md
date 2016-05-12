@@ -5,6 +5,7 @@ Practice a foreign language through writing
 ## Team
 
 [@Cjwired57](https://github.com/Cjwired57)
+[@ftBessmann](https://github.com/ftBessmann)
 [@nbkhope](https://github.com/nbkhope)
 
 ## MVP Features
