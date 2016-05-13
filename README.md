@@ -7,6 +7,7 @@ Practice a foreign language through writing
 [@Cjwired57](https://github.com/Cjwired57)
 [@ftBessmann](https://github.com/ftBessmann)
 [@nbkhope](https://github.com/nbkhope)
+[@shaun-sweet](https://github.com/shaun-sweet)
 
 ## MVP Features
 
