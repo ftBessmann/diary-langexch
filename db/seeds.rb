@@ -106,10 +106,24 @@ end
 end
 
 # Go through each profile and assign a native and foreign language
-# Profile.all.each do |profile|
-# 	profile.native_language = Language.all.sample
-# 	profile.foreign_language = Language.all.sample
-# 	profile.save
+Profile.all.each do |profile|
+	native = NativeLanguage.new(language: Language.all.sample)
+	foreign = ForeignLanguage.new(language: Language.all.sample)
+	profile.native_language = native
+	profile.foreign_language = foreign
+	profile.save
+end
+
+# 100.times do
+# 	NativeLanguage.create(
+# 		profile: Profile.all.sample,
+# 		language: Language.all.sample
+# 	)
+
+# 	ForeignLanguage.create(
+# 		profile: Profile.all.sample,
+# 		language: Language.all.sample
+# 	)
 # end
 
 require_relative 'custom_seeds'
