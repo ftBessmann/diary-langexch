@@ -6,5 +6,6 @@ class CreateCorrections < ActiveRecord::Migration
       t.belongs_to :diary_entry, index: true
 
       t.timestamps null: false
+    end
   end
 end
