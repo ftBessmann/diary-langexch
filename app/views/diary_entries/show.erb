@@ -1,0 +1,18 @@
+<!-- Show a diary entry -->
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+    	<%= @diary_entry.title %> 
+    	<span class="label label-primary"><%= @diary_entry.language.name %></span>
+		</h3>
+  </div>
+
+  <div class="panel-body">
+    <%= @diary_entry.content %>
+  </div>
+
+  <div class="panel-footer">
+  	Written by <a href="/profiles/<%= @diary_entry.author.id %>"><%= @diary_entry.author.name %></a>
+  </div>
+</div>
