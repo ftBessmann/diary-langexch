@@ -3,6 +3,10 @@ require 'faker'
 
 Country.delete_all
 Language.delete_all
+User.delete_all
+Profile.delete_all
+Diary.delete_all
+DiaryEntry.delete_all
 
 def japanese_text
 	[
@@ -81,3 +85,5 @@ end
 	# Assign fake diary entry to a random user
 	Profile.all.sample.diary.diary_entries << diary_entry
 end
+
+require_relative 'custom_seeds'
