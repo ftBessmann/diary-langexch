@@ -61,7 +61,23 @@ end
 		description: fake_description
 	)
 
+	# Make a diary for the profile
+	diary = Diary.new
+	diary.profile = profile
+
 	# Attach profile to user and save it
 	user.profile = profile
 	user.save
+end
+
+# Generate fake diary entries
+300.times do
+	diary_entry = DiaryEntry.new(
+		title: [Faker::Name.title, Faker::Book.title].sample,
+		content: fake_description,
+		language: Language.all.sample,
+		diary: Diary.all.sample,
+	)
+	# Assign fake diary entry to a random user
+	Profile.all.sample.diary.diary_entries << diary_entry
 end
