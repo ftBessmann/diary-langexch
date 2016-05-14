@@ -32,7 +32,7 @@
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="738" y="110" name="users">
+</datatypes><table x="807" y="130" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -45,13 +45,6 @@
 <row name="email" null="0" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>'NULL'</default></row>
-<row name="profile_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="profiles" row="id" />
-</row>
-<row name="last_login" null="1" autoincrement="0">
-<datatype>DATETIME</datatype>
-<default>NULL</default></row>
 <row name="created_at" null="1" autoincrement="0">
 <datatype>DATETIME</datatype>
 <default>NULL</default></row>
@@ -62,7 +55,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="514" y="331" name="profiles">
+<table x="584" y="280" name="profiles">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -84,6 +77,13 @@
 <default>NULL</default></row>
 <row name="description" null="1" autoincrement="0">
 <datatype>VARBINARY</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="last_login" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
 <default>NULL</default></row>
 <row name="created_at" null="1" autoincrement="0">
 <datatype>DATETIME</datatype>
@@ -135,7 +135,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="806" y="361" name="countries">
+<table x="844" y="340" name="countries">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -150,7 +150,7 @@
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="owner_id" null="1" autoincrement="0">
+<row name="profile_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="profiles" row="id" />
 </row>
@@ -217,7 +217,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="747" y="465" name="native_languages_people">
+<table x="798" y="451" name="native_languages_people">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -233,7 +233,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="718" y="602" name="foreign_languages_people">
+<table x="770" y="587" name="foreign_languages_people">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
