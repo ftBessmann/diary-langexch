@@ -3,4 +3,5 @@ class Profile < ActiveRecord::Base
 
   # This could be extended to many diaries
   has_one :diaries
+  belongs_to :country
 end
