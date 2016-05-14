@@ -3,7 +3,7 @@ class CreateDiaries < ActiveRecord::Migration
   	create_table :diaries do |t|
   		t.belongs_to :owner, index: true
 
-  		t.timestamps
+  		t.timestamps null: false
   	end
   end
 end
