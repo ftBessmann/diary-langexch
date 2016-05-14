@@ -16,7 +16,10 @@ end
 
 def fake_name
 	[
-		Faker::Japanese::Name.name,
+		#Faker::Japanese::Name.name,
+		"まゆみ", "山下", "山田", "佐藤",
+		"王朋", "李友", "朋友",
+		"João Ninguém", "Maria das Flores", "Antonio Careca",
 		Faker::Name.name
 	].sample
 end
@@ -51,7 +54,7 @@ end
 	# Make a new profile
 	profile = Profile.new(
 		name: fake_name,
-		birthday: Faker::Date.between(70.years.ago, 18.years.ago)
+		birthday: Faker::Date.between(70.years.ago, 18.years.ago),
 		gender: ["male", "female"].sample,
 		country: Country.all.sample,
 		avatar_url: Faker::Avatar.image,
