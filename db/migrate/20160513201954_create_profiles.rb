@@ -9,6 +9,7 @@ class CreateProfiles < ActiveRecord::Migration
   		t.string :description
   		t.belongs_to :user, index: true
 
+  		t.datetime :last_login
   		t.timestamps null: false
   	end
   end
