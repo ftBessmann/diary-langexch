@@ -7,6 +7,10 @@ User.delete_all
 Profile.delete_all
 Diary.delete_all
 DiaryEntry.delete_all
+Correction.delete_all
+Comment.delete_all
+NativeLanguage.delete_all
+ForeignLanguage.delete_all
 
 def japanese_text
 	[
@@ -85,5 +89,27 @@ end
 	# Assign fake diary entry to a random user
 	Profile.all.sample.diary.diary_entries << diary_entry
 end
+
+500.times do
+	diary_entry = DiaryEntry.all.sample
+	diary_entry.corrections << Correction.new(
+		content: diary_entry.content.gsub(/a/,"A")
+	)
+end
+
+1000.times do
+	polymorphic_array = [Correction.all.sample, DiaryEntry.all.sample]
+	polymorphic_array.sample.comments << Comment.new(
+		content: Faker::Lorem.sentence(4)
+	)
+
+end
+
+# Go through each profile and assign a native and foreign language
+# Profile.all.each do |profile|
+# 	profile.native_language = Language.all.sample
+# 	profile.foreign_language = Language.all.sample
+# 	profile.save
+# end
 
 require_relative 'custom_seeds'
