@@ -49,7 +49,12 @@
                 <li><a href="/login">Login</a></li>
                 <li><a href="/profiles/">Profile</a></li>
                 <!-- Change the link for profile -->
-                <li><a href="/logout">Logout</a></li>
+                <li>
+                  <form action="/logout" method="post" class="navbar-form">
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn btn-danger" title="Logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></button>
+                  </form>
+                </li>
               </ul>
             </div>
           </div>
