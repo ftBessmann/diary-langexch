@@ -1,8 +1,8 @@
 class DiaryEntry < ActiveRecord::Base
   belongs_to :diary
   belongs_to :language
-  has many :comments, as: :commentable
-  has many :corrections
+  has_many :comments, as: :commentable
+  has_many :corrections
 
   def author
   	self.diary.profile
