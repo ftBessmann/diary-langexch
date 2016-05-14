@@ -5,4 +5,6 @@
 <p><%= @profile.birthday %></p>
 <p><%= @profile.gender %></p>
 <p><%= @profile.country.name %></p>
+<p>Learning <span class="label label-primary"><%= @profile.foreign_language.language.name %></span></p>
+<p>Knows <span class="label label-success"><%= @profile.native_language.language.name %></span></p>
 <blockquote><%= @profile.description %></blockquote>
