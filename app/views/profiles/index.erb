@@ -1,0 +1,8 @@
+<h1>All Profiles</h1>
+
+<!-- Goes through each profile -->
+<% @profiles.each do |profile| %>
+	<!-- Single profile partial -->
+	<%= erb :'profiles/_profile', locals: { profile: profile } %>
+	<hr>
+<% end %>
