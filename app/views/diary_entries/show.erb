@@ -4,7 +4,7 @@
   <div class="panel-heading">
     <h3 class="panel-title">
     	<%= @diary_entry.title %> 
-    	<span class="label label-primary"><%= @diary_entry.language.name %></span>
+    	<a href="/languages/<%= @diary_entry.language.id %>"><span class="label label-primary"><%= @diary_entry.language.name %></span></a>
 		</h3>
   </div>
 
