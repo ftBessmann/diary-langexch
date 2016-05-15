@@ -13,7 +13,15 @@ gem 'activerecord', '~>4.2.0'
 gem 'rake'
 
 gem 'shotgun'
+
+# For password encryption
 gem 'bcrypt-ruby'
+
+# For paginatination
+# https://github.com/mislav/will_paginate
+#gem 'will_paginate', '~> 3.1.0'
+# https://github.com/bootstrap-ruby/will_paginate-bootstrap
+gem 'will_paginate-bootstrap'
 
 group :test do
   gem 'shoulda-matchers'

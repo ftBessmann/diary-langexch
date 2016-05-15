@@ -6,3 +6,6 @@
 	<%= erb :'profiles/_profile', locals: { profile: profile } %>
 	<hr>
 <% end %>
+
+<!-- For the page numbers -->
+<%= will_paginate @profiles, renderer: BootstrapPagination::Sinatra %>

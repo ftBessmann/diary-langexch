@@ -7,3 +7,6 @@
   	<li class="list-group-item"><a href="/diaries/<%= diary_entry.diary.id %>/diary_entries/<%= diary_entry.id %>"><%= diary_entry.title %></a> by <%= diary_entry.author.name %></li>
   <% end %>
 </ul>
+
+<!-- For the page numbers -->
+<%= will_paginate @diary_entries, renderer: BootstrapPagination::Sinatra %>
