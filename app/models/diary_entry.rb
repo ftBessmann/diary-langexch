@@ -7,4 +7,7 @@ class DiaryEntry < ActiveRecord::Base
   def author
   	self.diary.profile
   end
+
+  # Set default entries per page (for pagination)
+  #self.per_page = 10
 end
