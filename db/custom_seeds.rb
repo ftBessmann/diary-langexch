@@ -79,3 +79,18 @@ custom_users.each do |user|
 		)
 	end
 end
+
+# Assign native and foreign language to custom profiles
+chris.profile.native_language = NativeLanguage.new(language: Language.find_by(name: "English"))
+chris.profile.foreign_language = ForeignLanguage.new(language: Language.find_by(name: "Spanish"))
+
+mila.profile.native_language = NativeLanguage.new(language: Language.find_by(name: "Russian"))
+mila.profile.foreign_language = ForeignLanguage.new(language: Language.find_by(name: "English"))
+
+renan.profile.native_language = NativeLanguage.new(language: Language.find_by(name: "English"))
+renan.profile.foreign_language = ForeignLanguage.new(language: Language.find_by(name: "Japanese"))
+
+shaun.profile.native_language = NativeLanguage.new(language: Language.find_by(name: "English"))
+shaun.profile.foreign_language = ForeignLanguage.new(language: Language.find_by(name: "Spanish"))
+
+custom_users.each { |user| user.save }
