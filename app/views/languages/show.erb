@@ -1,0 +1,23 @@
+<div class="row">
+	<!-- Left-hand column -->
+	<div class="col-xs-12 col-sm-6">
+		<!-- Diary entries whose author is learning the language -->
+		<h2>Entries written in <%= @language.name %></h2>
+		<ul class="list-group">
+			<% @language.diary_entries.each do |diary_entry| %>
+		  	<li class="list-group-item"><a href="/diaries/<%= diary_entry.diary.id %>/diary_entries/<%= diary_entry.id %>"><%= diary_entry.title %></a> by <%= diary_entry.author.name %></li>
+		  <% end %>
+		</ul>
+	</div>
+	<!-- Right-hand column -->
+	<div class="col-xs-12 col-sm-6">
+		<!-- Diary entries whose author is native of the language -->
+		<!--<h2>Entries whose author's native language is <%= @language.name %></h2>-->
+		<h2>Native speakers of the language</h2>
+			<ul class="list-group">
+				<% @language.native_speakers.each do |speaker| %>
+			  	<li class="list-group-item"><a href="/profiles/<%= speaker.id %>"><%= speaker.name %></li>
+			  <% end %>
+			</ul>
+	</div>
+</div>

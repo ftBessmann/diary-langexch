@@ -50,7 +50,7 @@ CSV.foreach("db/data/languages.csv") do |row|
 end
 
 # Create fake users & their profiles
-50.times do
+100.times do
 	# Make a new user
 	user = User.new(
 		username: Faker::Internet.user_name,
