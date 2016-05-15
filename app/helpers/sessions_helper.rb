@@ -14,4 +14,8 @@ helpers do
   def logout!
     session.clear
   end
+
+  def ensure_login!
+    redirect '/login' unless logged_in?
+  end
 end
