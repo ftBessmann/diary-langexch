@@ -8,3 +8,4 @@
 <p>Learning <span class="label label-primary"><%= @profile.foreign_language.language.name %></span></p>
 <p>Knows <span class="label label-success"><%= @profile.native_language.language.name %></span></p>
 <blockquote><%= @profile.description %></blockquote>
+<a class="btn btn-primary" href="/diaries/<%= @profile.diary.id %>/diary_entries">My Diary</a>
