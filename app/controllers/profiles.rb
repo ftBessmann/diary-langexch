@@ -1,5 +1,6 @@
 get '/profiles' do
-	@profiles = Profile.all
+	#@profiles = Profile.all
+	@profiles = Profile.paginate(page: params[:page], per_page: 10)
 
 	erb :'profiles/index'
 end
