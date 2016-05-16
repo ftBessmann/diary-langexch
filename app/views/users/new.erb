@@ -54,7 +54,7 @@
 
   <div class="form-group">
     <label for="profile_country_id" class="control-label col-xs-12 col-sm-4">Country</label>
-    <div class="col-xs-12 col-sm-7">
+    <div class="col-xs-12 col-sm-5">
       <select class="form-control" id="profile_country_id" name="profile[country_id]">
         <option value="">Choose a country</option>
         <% @countries.each do |country| %>
@@ -66,7 +66,7 @@
 
   <div class="form-group">
     <label for="profile_native_language_id" class="control-label col-xs-12 col-sm-4">Native Language</label>
-    <div class="col-xs-12 col-sm-7">
+    <div class="col-xs-12 col-sm-5">
       <select class="form-control" id="profile_native_language_id" name="native_language_id">
         <option value="">Choose a language</option>
         <% @languages.each do |language| %>
@@ -78,7 +78,7 @@
 
   <div class="form-group">
     <label for="profile_foreign_language_id" class="control-label col-xs-12 col-sm-4">Foreign Language</label>
-    <div class="col-xs-12 col-sm-7">
+    <div class="col-xs-12 col-sm-5">
       <select class="form-control" id="profile_foreign_language_id" name="foreign_language_id">
         <option value="">Choose a language</option>
         <% @languages.each do |language| %>
@@ -87,6 +87,14 @@
       </select>
     </div>
   </div>
+
+  <div class="form-group form-group-lg">
+    <label class="col-xs-12 col-sm-3 col-sm-offset-1 control-label" for="profile_about">About</label>
+    <div class="col-xs-12 col-sm-5">
+      <textarea class="form-control" id="profile_about" name="profile[description]"></textarea>
+    </div>
+  </div>
+
 
   <div class="col-xs-12 col-sm-offset-4">
     <button type="submit" class="btn btn-primary">Submit</button>
