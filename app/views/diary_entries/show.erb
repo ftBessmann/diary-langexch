@@ -3,16 +3,36 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">
-    	<%= @diary_entry.title %> 
+    	<%= @diary_entry.title %>
     	<a href="/languages/<%= @diary_entry.language.id %>"><span class="label label-primary"><%= @diary_entry.language.name %></span></a>
 		</h3>
   </div>
 
-  <div class="panel-body">
+  <div class="panel-body entry-content">
     <%= @diary_entry.content %>
   </div>
 
   <div class="panel-footer">
-  	Written by <a href="/profiles/<%= @diary_entry.author.id %>"><%= @diary_entry.author.name %></a>
+  	Written by <a href="/profiles/<%= @diary_entry.author.id %>"><%= @diary_entry.author.name %></a> on <%= format_date @diary_entry.created_at %>
   </div>
 </div>
+
+<!-- Corrections -->
+<h3>Corrections</h3>
+<% @diary_entry.corrections.each do |correction| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+
+      </h3>
+    </div>
+
+    <div class="panel-body">
+      <%= correction.content %>
+    </div>
+
+    <div class="panel-footer">
+      Written by <a href="/profiles/<%= correction.profile.id %>"><%= correction.profile.name %></a> on <%= format_date @diary_entry.created_at %>
+    </div>
+  </div>
+<% end %>
