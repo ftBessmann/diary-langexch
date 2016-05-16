@@ -1,6 +1,8 @@
 <!-- New Account Registration -->
 <h1>Registration Page</h1>
 <form action="/register" method="post" class="form-horizontal">
+
+  <!-- Essential Account Information -->
   <div class="form-group form-group-lg">
     <label class="col-xs-12 col-sm-3 col-sm-offset-1 control-label" for="user_username">Username</label>
     <div class="col-xs-12 col-sm-5">
@@ -22,6 +24,8 @@
     </div>
   </div>
 
+  <!-- Profile Information -->
+
   <div class="form-group form-group-lg">
     <label class="col-xs-12 col-sm-3 col-sm-offset-1 control-label" for="profile_name">Name</label>
     <div class="col-xs-12 col-sm-5">
@@ -30,21 +34,29 @@
   </div>
 
   <div class="form-group form-group-lg">
+    <label class="col-xs-12 col-sm-3 col-sm-offset-1 control-label">Birthday</label>
+    <div class="col-xs-12 col-sm-5">
+     <%= erb :'users/birthday' %>
+    </div>
+  </div>
+
+  <div class="form-group form-group-lg">
     <label class="col-xs-12 col-sm-3 col-sm-offset-1 control-label">Gender</label>
     <div class="col-xs-12 col-sm-5">
-          <label class="radio-inline">
-      <input type="radio" name="profile[gender]" id="profile_gender_male" value="male"> Male
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="profile[gender]" id="profile_gender_female" value="female"> Female
-    </label>
+      <label class="radio-inline">
+        <input type="radio" name="profile[gender]" id="profile_gender_male" value="male" checked> Male
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="profile[gender]" id="profile_gender_female" value="female"> Female
+      </label>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="profile_country_id" class="control-label col-xs-12">Country</label>
-    <div class="col-xs-12 col-sm-4">
+    <label for="profile_country_id" class="control-label col-xs-12 col-sm-4">Country</label>
+    <div class="col-xs-12 col-sm-7">
       <select class="form-control" id="profile_country_id" name="profile[country_id]">
+        <option value="">Choose a country</option>
         <% @countries.each do |country| %>
           <option value="<%= country.id %>"><%= country.name %></option>
         <% end %>
@@ -53,9 +65,10 @@
   </div>
 
   <div class="form-group">
-    <label for="profile_native_language_id" class="control-label col-xs-12">Native Language</label>
-    <div class="col-xs-12 col-sm-4">
+    <label for="profile_native_language_id" class="control-label col-xs-12 col-sm-4">Native Language</label>
+    <div class="col-xs-12 col-sm-7">
       <select class="form-control" id="profile_native_language_id" name="native_language_id">
+        <option value="">Choose a language</option>
         <% @languages.each do |language| %>
           <option value="<%= language.id %>"><%= language.name %></option>
         <% end %>
@@ -64,9 +77,10 @@
   </div>
 
   <div class="form-group">
-    <label for="profile_foreign_language_id" class="control-label col-xs-12">Foreign Language</label>
-    <div class="col-xs-12 col-sm-4">
+    <label for="profile_foreign_language_id" class="control-label col-xs-12 col-sm-4">Foreign Language</label>
+    <div class="col-xs-12 col-sm-7">
       <select class="form-control" id="profile_foreign_language_id" name="foreign_language_id">
+        <option value="">Choose a language</option>
         <% @languages.each do |language| %>
           <option value="<%= language.id %>"><%= language.name %></option>
         <% end %>
