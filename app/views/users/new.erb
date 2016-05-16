@@ -26,75 +26,7 @@
 
   <!-- Profile Information -->
 
-  <div class="form-group form-group-lg">
-    <label class="col-xs-12 col-sm-3 col-sm-offset-1 control-label" for="profile_name">Name</label>
-    <div class="col-xs-12 col-sm-5">
-      <input type="text" class="form-control" id="profile_name" name="profile[name]" required>
-    </div>
-  </div>
-
-  <div class="form-group form-group-lg">
-    <label class="col-xs-12 col-sm-3 col-sm-offset-1 control-label">Birthday</label>
-    <div class="col-xs-12 col-sm-5">
-     <%= erb :'users/birthday' %>
-    </div>
-  </div>
-
-  <div class="form-group form-group-lg">
-    <label class="col-xs-12 col-sm-3 col-sm-offset-1 control-label">Gender</label>
-    <div class="col-xs-12 col-sm-5">
-      <label class="radio-inline">
-        <input type="radio" name="profile[gender]" id="profile_gender_male" value="male" checked> Male
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="profile[gender]" id="profile_gender_female" value="female"> Female
-      </label>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="profile_country_id" class="control-label col-xs-12 col-sm-4">Country</label>
-    <div class="col-xs-12 col-sm-5">
-      <select class="form-control" id="profile_country_id" name="profile[country_id]">
-        <option value="">Choose a country</option>
-        <% @countries.each do |country| %>
-          <option value="<%= country.id %>"><%= country.name %></option>
-        <% end %>
-      </select>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="profile_native_language_id" class="control-label col-xs-12 col-sm-4">Native Language</label>
-    <div class="col-xs-12 col-sm-5">
-      <select class="form-control" id="profile_native_language_id" name="native_language_id">
-        <option value="">Choose a language</option>
-        <% @languages.each do |language| %>
-          <option value="<%= language.id %>"><%= language.name %></option>
-        <% end %>
-      </select>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="profile_foreign_language_id" class="control-label col-xs-12 col-sm-4">Foreign Language</label>
-    <div class="col-xs-12 col-sm-5">
-      <select class="form-control" id="profile_foreign_language_id" name="foreign_language_id">
-        <option value="">Choose a language</option>
-        <% @languages.each do |language| %>
-          <option value="<%= language.id %>"><%= language.name %></option>
-        <% end %>
-      </select>
-    </div>
-  </div>
-
-  <div class="form-group form-group-lg">
-    <label class="col-xs-12 col-sm-3 col-sm-offset-1 control-label" for="profile_about">About</label>
-    <div class="col-xs-12 col-sm-5">
-      <textarea class="form-control" id="profile_about" name="profile[description]"></textarea>
-    </div>
-  </div>
-
+  <%= erb :'users/_profile_form' %>
 
   <div class="col-xs-12 col-sm-offset-4">
     <button type="submit" class="btn btn-primary">Submit</button>
