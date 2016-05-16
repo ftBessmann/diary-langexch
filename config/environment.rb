@@ -22,6 +22,7 @@ require 'erb'
 #require 'will_paginate'
 require "will_paginate-bootstrap"
 require 'will_paginate/active_record'
+require 'date'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))

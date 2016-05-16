@@ -1,6 +1,6 @@
 <!-- This page should only be accessible if own user account -->
 <h1>Account Information</h1>
 
-<p>Username: <%= @user.username %></p>
+<p>Username: <a href="/profiles/<%= @user.profile.id %>"><%= @user.username %></a></p>
 <p>Email: <%= @user.email %></p>
 <p><a href="#">Change Password</a><p>

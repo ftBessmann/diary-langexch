@@ -1,4 +1,7 @@
 class Profile < ActiveRecord::Base
+
+  before_save :set_avatar_url
+
   belongs_to :user
   has_many :corrections
   has_many :comments
@@ -8,4 +11,8 @@ class Profile < ActiveRecord::Base
   # This could be extended to many diaries
   has_one :diary
   belongs_to :country
+
+  def set_avatar_url
+    self.avatar_url ||= "/images/default_avatar.jpg"
+  end
 end
