@@ -13,10 +13,17 @@ get '/register' do
 end
 
 post '/register' do
+  # Create user account
   @user = User.new(params[:user])
+  # Create profile and associate it with user account
   @profile = Profile.new(params[:profile])
+  @user.profile = @profile
+  # Create diary for the profile
+  @user.profile.diary = Diary.new
+  # Associate languages to the profile
   @profile.native_language = NativeLanguage.new(language_id: params[:native_language_id])
   @profile.foreign_language = ForeignLanguage.new(language_id: params[:foreign_language_id])
+  @profile.birthday = Date.new(params[:profile_birthday_year].to_i, params[:profile_birthday_month].to_i, params[:profile_birthday_day].to_i)
   if @user.save
     login(@user)
     redirect "/"
