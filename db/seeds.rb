@@ -93,6 +93,7 @@ end
 500.times do
 	diary_entry = DiaryEntry.all.sample
 	diary_entry.corrections << Correction.new(
+		profile_id: Profile.all.sample.id,
 		content: diary_entry.content.gsub(/a/,"A")
 	)
 end

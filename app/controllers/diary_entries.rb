@@ -4,3 +4,5 @@ get '/diary_entries' do
 
 	erb :'diary_entries/index'
 end
+
+
