@@ -3,4 +3,4 @@
 
 <p>Username: <a href="/profiles/<%= @user.profile.id %>"><%= @user.username %></a></p>
 <p>Email: <%= @user.email %></p>
-<p><a href="#">Change Password</a><p>
+<p><a href="/users/<%= @user.id %>/edit">Change Password</a><p>
