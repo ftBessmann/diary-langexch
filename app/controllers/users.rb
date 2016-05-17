@@ -47,6 +47,32 @@ end
 
 get '/users/:id' do
 	@user = User.find_by(id: params[:id])
+  if @user == current_user
+	  erb :'users/show'
+  else
+    redirect "/"
+  end
+end
 
-	erb :'users/show'
+get '/users/:id/edit' do
+  @user = User.find_by(id: params[:id])
+  if @user == current_user
+    erb :'users/edit'
+  else
+    redirect "/"
+  end
+end
+
+put '/users/:id' do
+  @user = User.find_by(id: params[:id])
+  if @user.password == params[:user][:password]
+    @user.password = params[:user][:new_password]
+    if @user.save
+      redirect "/users/#{@user.id}"
+    else
+      erb :"users/edit"
+    end
+  else
+    erb :"users/edit"
+  end
 end
