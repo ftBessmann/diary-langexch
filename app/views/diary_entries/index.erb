@@ -4,7 +4,7 @@
 
 <ul class="list-group">
 	<% @diary_entries.each do |diary_entry| %>
-  	<li class="list-group-item"><a href="/diaries/<%= diary_entry.diary.id %>/diary_entries/<%= diary_entry.id %>"><%= diary_entry.title %></a> by <%= diary_entry.author.name %></li>
+  	<li class="list-group-item"><a href="/diaries/<%= diary_entry.diary.id %>/diary_entries/<%= diary_entry.id %>"><%= diary_entry.title %></a> by <a href="/profiles/<%= diary_entry.author.id %>"><%= diary_entry.author.name %></a></li>
   <% end %>
 </ul>
 

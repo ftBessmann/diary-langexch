@@ -1,0 +1,10 @@
+<h1>Edit Profile</h1>
+
+<form action="/profiles/<%= @profile.id %>" method="post" class="form-horizontal">
+  <!-- You need this to go to the right PUT route -->
+  <input type="hidden" name="_method" value="put">
+  <%= erb :'users/_profile_form' %>
+  <div class="col-xs-12 col-sm-offset-4">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
