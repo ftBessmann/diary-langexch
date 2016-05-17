@@ -48,7 +48,16 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <% if logged_in? %>
-                  <li><a href="/profiles/<%= current_user.profile.id %>">Profile</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/profiles/<%= current_user.profile.id %>">Profile</a></li>
+                      <li><a href="/profiles/<%= current_user.profile.id %>/edit">Edit Profile</a></li>
+                      <li><a href="/diaries/<%= current_user.profile.diary.id %>/diary_entries">My Diary</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="/users/<%= current_user.id %>">My Account</a></li>
+                    </ul>
+                  </li>
                   <li>
                     <form action="/logout" method="post" class="navbar-form">
                       <input type="hidden" name="_method" value="delete">
