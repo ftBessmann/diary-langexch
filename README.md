@@ -7,7 +7,6 @@ Practice a foreign language through writing
 * [@Cjwired57](https://github.com/Cjwired57)
 * [@ftBessmann](https://github.com/ftBessmann)
 * [@nbkhope](https://github.com/nbkhope)
-* [@shaun-sweet](https://github.com/shaun-sweet)
 
 ## MVP Features
 
@@ -19,7 +18,7 @@ A user can login/logout from the account
 A user has a profile page
 A user can edit his own profile
 A user can delete his profile
-A user can see other people's profiles 
+A user can see other people's profiles
 
 A user has a diary
 A user can write new diary entries
@@ -39,4 +38,4 @@ A user can vote up/down (1, -1) a correction
 A user can see how many views a diary entry has
 
 A user has access to a WYSIWYG editor when writing a diary entry; that editor allows text to be bold, italicized, underscored, highlighted, etc
-``` 
+```
