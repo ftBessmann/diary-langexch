@@ -24,6 +24,8 @@ end
 post '/register' do
   # Create user account
   @user = User.new(params[:user])
+  @countries = Country.all
+  @languages = Language.all
 
   # Create profile and associate it with user account
   @profile = Profile.new(params[:profile])
@@ -37,10 +39,15 @@ post '/register' do
   @profile.foreign_language = ForeignLanguage.new(language_id: params[:foreign_language_id])
   @profile.birthday = Date.new(params[:profile_birthday_year].to_i, params[:profile_birthday_month].to_i, params[:profile_birthday_day].to_i)
 
-  if @user.save
+  if @user.save && @profile.save
     login(@user)
     redirect "/"
   else
+    @errors = @user.errors.full_messages + @profile.errors.full_messages
+    
+    # Remove the user that was saved
+    @user.destroy
+    
     erb :'/users/new'
   end
 end
