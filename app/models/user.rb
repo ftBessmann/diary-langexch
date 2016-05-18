@@ -6,6 +6,14 @@ class User < ActiveRecord::Base
 	# This could be extended to many profiles
   has_one :profile
 
+  validates :username, presence: true
+  validates :email, presence: true, uniqueness: true
+  # doesn't work: 
+  #validates :password, length: { minimum: 6, message: 'password length' }
+  validates :password, presence: true
+
+  validates_presence_of :profile
+
   def password
     @password ||= Password.new(password_digest)
   end
