@@ -1,19 +1,28 @@
 <!-- New Account Registration -->
 <h1>Registration Page</h1>
+
+<% if @errors %>
+  <ul>
+    <% @errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <form action="/register" method="post" class="form-horizontal">
 
   <!-- Essential Account Information -->
   <div class="form-group form-group-lg">
     <label class="col-xs-12 col-sm-3 col-sm-offset-1 control-label" for="user_username">Username</label>
     <div class="col-xs-12 col-sm-5">
-      <input type="text" class="form-control" id="user_username" name="user[username]" required>
+      <input type="text" class="form-control" id="user_username" name="user[username]" value="<%= @user.try(:username) %>" required>
     </div>
   </div>
 
   <div class="form-group form-group-lg">
     <label class="col-xs-12 col-sm-3 col-sm-offset-1 control-label" for="user_email">Email</label>
     <div class="col-xs-12 col-sm-5">
-      <input type="email" class="form-control" id="user_email" name="user[email]" required>
+      <input type="email" class="form-control" id="user_email" name="user[email]" value="<%= @user.try(:email) %>" required>
     </div>
   </div>
 
