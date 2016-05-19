@@ -23,6 +23,8 @@ gem 'bcrypt-ruby'
 # https://github.com/bootstrap-ruby/will_paginate-bootstrap
 gem 'will_paginate-bootstrap'
 
+gem 'htmldiff'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'

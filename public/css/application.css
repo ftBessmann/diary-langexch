@@ -5,3 +5,28 @@
 .profile-avatar {
   width: 128px;
 }
+
+
+/* When you replace a word with a new one, do this with the new word */
+ins.diffmod {
+  background-color: #ccff00;
+  text-decoration: none;
+}
+
+/* When you replace a word with a new one, do this with the old word */
+del.diffmod {
+  background-color: #FF7171;
+  /*text-decoration: line-through;*/
+}
+
+/* When you add in new words, they will be styled this way */
+ins.diffins {
+  background-color: #FFFBCC;
+  text-decoration: none;
+}
+
+/* Is this ever used? */
+del.diffins {
+  background-color: #red;
+}
+

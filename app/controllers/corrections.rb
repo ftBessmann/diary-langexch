@@ -4,6 +4,9 @@ post '/diary_entries/:id/corrections' do
   @correction.profile = current_user.profile
   @correction.diary_entry = DiaryEntry.find_by(id: params[:id])
 
+  # Highlights the changes from the original to the corrected entry using HTMLDiff
+  @correction.content = @correction.diary_entry.compare_with(@correction)
+
   if @correction.save
     erb :'diary_entries/_entry',
         layout: !request.xhr?,
