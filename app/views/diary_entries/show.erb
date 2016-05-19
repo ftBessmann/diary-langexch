@@ -28,23 +28,7 @@
 <button id="correction-button" class="btn btn-primary">Correct Entry</button>
 
 <!-- Correction Form -->
-<div class="row">
-  <form id="correction-form" action="/diary_entries/<%= @diary_entry.id %>/corrections" method="post" class="form-horizontal">
-    <div class="col-xs-12 col-sm-offset-3 col-sm-6">
-      <textarea class="form-control" rows="12" cols="80" id="correction-form-content" name="correction[content]"></textarea>
-    </div>
-    <div class="col-xs-12 col-sm-3">
-      <button type="submit" class="btn btn-success">Correct</button>
-      <button id="cancel-correction-button" class="btn btn-danger">Cancel</button>
-    </div>
-  </form>
-</div>
+<%= erb :'corrections/new' %>
 
 <!-- Corrections -->
-<h3>Corrections</h3>
-
-<div id="corrections-container">
-<% @diary_entry.corrections.sort_by { |correction| correction.created_at }.each do |correction| %>
-  <%= erb :'diary_entries/_entry', locals: { correction: correction } %>
-<% end %>
-</div>
+<%= erb :'corrections/index' %>
