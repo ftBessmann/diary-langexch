@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-1">
+    <div id="comments-<%= commentable.id %>">
+      <% commentable.comments.sort_by { |comment| comment.created_at }.reverse_each do |comment| %>
+      <%= erb :'comments/_comment', locals: { comment: comment } %>
+      <% end %>
+      <!-- Diary Entry Comment Form -->
+      <%= erb :'comments/new', locals: { commentable: commentable, commentables: commentables } %>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-1">
+    <a class="btn btn-info" role="button" data-toggle="collapse" href="#comments-<%= commentable.id %>" aria-expanded="false" aria-controls="collapseComments"><%= commentable.comments.count %> Comments</a><br><br>
+  </div>
+
+  <!-- Diary Entry Comment Entry Button -->
+  <!-- <button id="comment-button" class="btn btn-primary">Comment Entry</button> -->
+
+</div>
