@@ -3,6 +3,7 @@ get '/login' do
   erb :'sessions/new'
 end
 
+# Same as post /sessions
 post '/login' do
   user = User.authenticate(params[:user][:email], params[:user][:password])
   if user

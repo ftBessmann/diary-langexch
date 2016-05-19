@@ -1,3 +1,5 @@
+# Lists all the users in the system
+# Route not meant to be available to non-admin members
 get '/users' do
 	@users = User.all
 
@@ -21,6 +23,7 @@ get '/register' do
   end
 end
 
+# Same as post /users
 post '/register' do
   # Create user account
   @user = User.new(params[:user])
@@ -44,14 +47,15 @@ post '/register' do
     redirect "/"
   else
     @errors = @user.errors.full_messages + @profile.errors.full_messages
-    
+
     # Remove the user that was saved
     @user.destroy
-    
+
     erb :'/users/new'
   end
 end
 
+# Display a user account page
 get '/users/:id' do
 	@user = User.find_by(id: params[:id])
   if @user == current_user
@@ -61,6 +65,7 @@ get '/users/:id' do
   end
 end
 
+# Displays form to edit user account
 get '/users/:id/edit' do
   @user = User.find_by(id: params[:id])
   if @user == current_user
@@ -70,6 +75,7 @@ get '/users/:id/edit' do
   end
 end
 
+# Updates user account
 put '/users/:id' do
   @user = User.find_by(id: params[:id])
   if @user.password == params[:user][:password]
