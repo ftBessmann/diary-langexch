@@ -1,0 +1,34 @@
+<!-- Show a diary entry -->
+
+<div id="diary-entry" class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+    	<%= @diary_entry.title %>
+    	<a href="/languages/<%= @diary_entry.language.id %>"><span class="label label-primary"><%= @diary_entry.language.name %></span></a>
+		</h3>
+  </div>
+
+  <div id="diary-entry-content" class="panel-body entry-content">
+    <%= @diary_entry.content %>
+  </div>
+
+  <div class="panel-footer">
+  	Written by <a href="/profiles/<%= @diary_entry.author.id %>"><%= @diary_entry.author.name %></a> on <%= format_date @diary_entry.created_at %>
+    <form action="/diary_entries/<%= @diary_entry.id %>/like" method="post" class="like-form form-inline">
+      <input type="hidden" name="source" value="<%= request.path %>">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="like-count btn btn-secondary"><%= @diary_entry.likes.count %></button>
+        <button class="like-btn btn<%= " btn-primary" if @diary_entry.likes.find { |like| like.profile == current_user.profile } %>" type="submit"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Correct Entry Button -->
+<button id="correction-button" class="btn btn-primary">Correct Entry</button>
+
+<!-- Correction Form -->
+<%= erb :'corrections/new' %>
+
+<!-- Corrections -->
+<%= erb :'corrections/index' %>

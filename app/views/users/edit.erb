@@ -1,0 +1,7 @@
+<h1>Edit Password</h1>
+<form action="/users/<%= current_user.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  Current password:<input type="password" name="user[password]">
+  New passwrod:<input type="password" name="user[new_password]">
+  <button type="submit">Change</button>
+</form>

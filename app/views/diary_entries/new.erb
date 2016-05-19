@@ -1,0 +1,30 @@
+<!-- Write new diary entry (form) -->
+
+<form action="/diaries/<%= params[:id] %>/diary_entries" method="post">
+  <div class="form-group">
+    <label for="diary_entry_title" class="control-label col-xs-12">Title</label>
+    <div class="col-xs-12">
+      <input type="text" class="form-control" id="diary_entry_title" name="diary_entry[title]">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="diary_entry_content" class="control-label col-xs-12">Body</label>
+    <div class="col-xs-12">
+      <textarea id="diary_entry_content" class="form-control" rows="12" name="diary_entry[content]"></textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="diary_entry_language_id" class="control-label col-xs-12">Language</label>
+    <div class="col-xs-12 col-sm-4">
+      <select class="form-control" id="diary_entry_language_id" name="diary_entry[language_id]">
+        <% @languages.each do |language| %>
+          <option value="<%= language.id %>"><%= language.name %></option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

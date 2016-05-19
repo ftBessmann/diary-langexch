@@ -1,0 +1,23 @@
+<div class="col-xs-12 col-sm-4">
+<select class="form-control col-xs-12 col-sm-4" name="profile_birthday_month">
+  <% for month in 1..12 %>
+    <option value="<%= month %>" <%= "selected" if @profile.try(:birthday) && @profile.birthday.month == month %>><%= Date::MONTHNAMES[month] %></option>
+  <% end %>
+</select>
+</div>
+
+<div class="col-xs-12 col-sm-4">
+<select class="form-control col-xs-12 col-sm-4" name="profile_birthday_day">
+  <% for day in 1..31 %>
+    <option value="<%= day %>" <%= "selected" if @profile.try(:birthday) && @profile.birthday.day == day %>><%= day %></option>
+  <% end %>
+</select>
+</div>
+
+<div class="col-xs-12 col-sm-4">
+<select class="form-control" name="profile_birthday_year">
+  <% for year in (Date.today.year - 100)..Date.today.year %>
+    <option value="<%= year %>" <%= "selected" if @profile.try(:birthday) && @profile.birthday.year == year %>><%= year %></option>
+  <% end %>
+</select>
+</div>

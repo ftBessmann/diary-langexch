@@ -1,0 +1,6 @@
+<h1>All Languages</h1>
+
+<% @languages.each do |language| %>
+	<a href="/languages/<%= language.id %>"><%= language.name %></a>
+	<hr>
+<% end %>

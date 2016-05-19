@@ -1,0 +1,16 @@
+<!-- Profile Page -->
+
+<img class="img-responsive img-thumbnail img-circle profile-avatar" src="<%= @profile.avatar_url %>">
+<p><%= @profile.name %></p>
+<p><%= @profile.birthday %></p>
+<p><%= @profile.gender %></p>
+<p><%= @profile.country.name %></p>
+<p>Learning <a href="/languages/<%= @profile.foreign_language.language.id %>"><span class="label label-primary"><%= @profile.foreign_language.language.name %></span></a></p>
+<p>Knows <a href="/languages/<%= @profile.native_language.language.id %>"><span class="label label-success"><%= @profile.native_language.language.name %></span></a></p>
+<blockquote><%= @profile.description %></blockquote>
+<a class="btn btn-primary" href="/diaries/<%= @profile.diary.id %>/diary_entries">My Diary</a>
+
+<!-- Only display this if you are the owner of the profile -->
+<% if current_user.profile.id == @profile.id %>
+  <a href="/profiles/<%= @current_user.profile.id %>/edit">Edit Profile</a>
+<% end %>
