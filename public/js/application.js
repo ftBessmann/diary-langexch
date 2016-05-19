@@ -42,9 +42,35 @@ $(document).ready(function() {
   		console.log(this);
   		$(this).hide();
   		// Makes sure to clear up the form
-  		$('#correction-form').find("textarea[name='correction[content]']").html("")
   		$('#correction-button').show();
   	});
 
   });	
+
+  $('#diary-entry').on('submit', '.like-form', function(e) {
+    e.preventDefault();
+
+    console.log(this);
+
+    var request = $.ajax({
+      method: $(this).attr('method'),
+      url: $(this).attr('action'),
+      //data: $(this).serialize(),
+      context: $(this)
+    });
+
+    request.done(function(response) {
+      console.log(response);
+      $(this).find('.like-count').html(response.like_count);
+      console.log(this);
+
+      if ($(this).find('.like-btn').hasClass('btn-primary')) {
+        $(this).find('.like-btn').removeClass('btn-primary');
+      }
+      else {
+        $(this).find('.like-btn').addClass('btn-primary');
+      }
+      
+    });
+  });
 });

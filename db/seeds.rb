@@ -11,6 +11,7 @@ Correction.delete_all
 Comment.delete_all
 NativeLanguage.delete_all
 ForeignLanguage.delete_all
+Like.delete_all
 
 def japanese_text
 	[
@@ -52,7 +53,7 @@ end
 # Create fake users & their profiles
 100.times do
 	# Make a new user
-	user = User.new(
+	user = User.create(
 		username: Faker::Internet.user_name,
 		password: "1",
 		#password: Faker::Internet.password,
@@ -60,48 +61,49 @@ end
 	)
 
 	# Make a new profile
-	profile = Profile.new(
+	profile = Profile.create(
 		name: fake_name,
 		birthday: Faker::Date.between(70.years.ago, 18.years.ago),
 		gender: ["male", "female"].sample,
 		country: Country.all.sample,
 		avatar_url: Faker::Avatar.image,
-		description: fake_description
+		description: fake_description,
+		user: user
 	)
 
 	# Make a diary for the profile
-	diary = Diary.new
-	diary.profile = profile
-
-	# Attach profile to user and save it
-	user.profile = profile
-	user.save
+	diary = Diary.create(
+		profile: profile
+	)
 end
 
 # Generate fake diary entries
 300.times do
-	diary_entry = DiaryEntry.new(
+	DiaryEntry.create(
 		title: [Faker::Name.title, Faker::Book.title].sample,
 		content: fake_description,
 		language: Language.all.sample,
-		diary: Diary.all.sample,
+		diary: Diary.all.sample
 	)
-	# Assign fake diary entry to a random user
-	Profile.all.sample.diary.diary_entries << diary_entry
 end
 
 500.times do
 	diary_entry = DiaryEntry.all.sample
-	diary_entry.corrections << Correction.new(
-		profile_id: Profile.all.sample.id,
-		content: diary_entry.content.gsub(/a/,"A")
+
+	Correction.create(
+		profile: Profile.all.sample,
+		content: diary_entry.content.gsub(/a/,"A"),
+		diary_entry: diary_entry
 	)
 end
 
 1000.times do
-	polymorphic_array = [Correction.all.sample, DiaryEntry.all.sample]
-	polymorphic_array.sample.comments << Comment.new(
-		content: Faker::Lorem.sentence(4)
+	entry = [Correction.all.sample, DiaryEntry.all.sample].sample
+
+	Comment.create(
+		content: Faker::Lorem.sentence(4),
+		commentable: entry,
+		profile: Profile.all.sample
 	)
 
 end
@@ -128,3 +130,11 @@ end
 # end
 
 require_relative 'custom_seeds'
+
+# Create likes for entries and corrections
+800.times do
+	Like.create(
+		likeable: [DiaryEntry.all.sample, Correction.all.sample].sample,
+		profile: Profile.all.sample
+	)
+end

@@ -4,6 +4,8 @@ class DiaryEntry < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :corrections
 
+  has_many :likes, as: :likeable
+
   def author
   	self.diary.profile
   end
