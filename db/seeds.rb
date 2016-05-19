@@ -11,6 +11,7 @@ Correction.delete_all
 Comment.delete_all
 NativeLanguage.delete_all
 ForeignLanguage.delete_all
+Like.delete_all
 
 def japanese_text
 	[
@@ -76,25 +77,26 @@ end
 	# Attach profile to user and save it
 	user.profile = profile
 	user.save
+	diary.save
 end
 
 # Generate fake diary entries
 300.times do
-	diary_entry = DiaryEntry.new(
+	DiaryEntry.create(
 		title: [Faker::Name.title, Faker::Book.title].sample,
 		content: fake_description,
 		language: Language.all.sample,
-		diary: Diary.all.sample,
+		diary: Diary.all.sample
 	)
-	# Assign fake diary entry to a random user
-	Profile.all.sample.diary.diary_entries << diary_entry
 end
 
 500.times do
 	diary_entry = DiaryEntry.all.sample
-	diary_entry.corrections << Correction.new(
-		profile_id: Profile.all.sample.id,
-		content: diary_entry.content.gsub(/a/,"A")
+
+	Correction.create(
+		profile: Profile.all.sample,
+		content: diary_entry.content.gsub(/a/,"A"),
+		diary_entry: diary_entry
 	)
 end
 
@@ -128,3 +130,11 @@ end
 # end
 
 require_relative 'custom_seeds'
+
+# Create likes for entries and corrections
+800.times do
+	Like.create(
+		likeable: [DiaryEntry.all.sample, Correction.all.sample].sample,
+		profile: Profile.all.sample
+	)
+end
