@@ -38,5 +38,11 @@ post '/diary_entries/:id/like' do
 	else
 		Like.create(likeable: @diary_entry, profile: current_user.profile)
 	end
-	redirect "#{params[:source]}"
+
+	if request.xhr?
+		content_type :json
+		{ like_count: @diary_entry.likes.count }.to_json
+	else
+		redirect "#{params[:source]}"
+	end
 end
