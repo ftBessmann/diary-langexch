@@ -24,11 +24,18 @@
   </div>
 </div>
 
-<!-- Correct Entry Button -->
-<button id="correction-button" class="btn btn-primary">Correct Entry</button>
+<!-- Only show the correction form if the user has not already made a correction
+     to the diary entry -->
+<% if !current_user.profile.has_correction? @diary_entry %>
+  <!-- Correct Entry Button -->
+  <button id="correction-button" class="btn btn-primary">Correct Entry</button>
 
-<!-- Correction Form -->
-<%= erb :'corrections/new' %>
+  <!-- Correction Form -->
+  <%= erb :'corrections/new' %>
+
+<% else %>
+  <span>You have already made a correction to this diary entry :)</span>
+<% end %>
 
 <!-- Corrections -->
 <%= erb :'corrections/index' %>
