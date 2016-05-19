@@ -12,9 +12,9 @@ $(document).ready(function() {
   $('#correction-button').on('click', function() {
   	$(this).hide();
   	$('#correction-form').show();
-  	
+
   	// how to remove extra space ???
-  	$('#correction-form-content').html($('#diary-entry-content').text())
+  	$('#correction-form-content').html($.trim($('#diary-entry-content').text()))
   });
 
   // Cancels the correction form (hides it and brings back correction button)
@@ -35,7 +35,7 @@ $(document).ready(function() {
   		context: $(this)
   	});
 
-  	
+
   	request.done(function(response) {
   		console.log(response);
   		$('#corrections-container').append(response);
@@ -45,7 +45,7 @@ $(document).ready(function() {
   		$('#correction-button').show();
   	});
 
-  });	
+  });
 
   $('#diary-entry').on('submit', '.like-form', function(e) {
     e.preventDefault();
@@ -70,7 +70,7 @@ $(document).ready(function() {
       else {
         $(this).find('.like-btn').addClass('btn-primary');
       }
-      
+
     });
   });
 });
