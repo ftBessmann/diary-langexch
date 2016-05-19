@@ -1,0 +1,3 @@
+<%= erb :'diary_entries/_entry', locals: { correction: correction } %>
+
+<%= erb :'comments/index', locals: {commentable: correction, commentables: "corrections" } %>
