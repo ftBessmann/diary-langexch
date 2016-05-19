@@ -18,13 +18,16 @@ class Profile < ActiveRecord::Base
   validates :gender, presence: true
   validates :country, presence: true
 
-  validates_presence_of :diary
+  # Disabled because affects the seeding
+  # (when you try to create a profile without a diary, it fails to create profile
+  #validates_presence_of :diary
 
-  # This doesn't work?
-  validates_presence_of :native_language
-  validates_presence_of :foreign_language
-  validates :native_language, presence: true
-  validates :foreign_language, presence: true
+  # This doesn't work? Also affects seeding (won't save profile)
+  # There are issues when one model depends on another via associations...
+  #validates_presence_of :native_language
+  #validates_presence_of :foreign_language
+  #validates :native_language, presence: true
+  #validates :foreign_language, presence: true
 
   def set_avatar_url
     self.avatar_url ||= "/images/default_avatar.jpg"

@@ -12,7 +12,9 @@ class User < ActiveRecord::Base
   #validates :password, length: { minimum: 6, message: 'password length' }
   validates :password, presence: true
 
-  validates_presence_of :profile
+  # Disabled because affects the seeding
+  # (when you try to create a user without a profile, it fails to create user)
+  #validates_presence_of :profile
 
   def password
     @password ||= Password.new(password_digest)
