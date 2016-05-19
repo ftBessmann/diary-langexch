@@ -1,0 +1,11 @@
+<div class="row">
+  <form id="comment-form" action="/<%= commentables %>/<%= commentable.id %>/comments" method="post" class="form-horizontal">
+    <input type="hidden" name="source" value="<%= request.path %>">
+    <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+      <textarea class="form-control" rows="3" cols="80" id="comment-form-content" name="comment[content]"></textarea>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <button type="submit" class="btn btn-success">Comment</button>
+    </div>
+  </form>
+</div>

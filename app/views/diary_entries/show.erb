@@ -37,5 +37,10 @@
   <span>You have already made a correction to this diary entry :)</span>
 <% end %>
 
+<!-- Comments for Diary Entry -->
+<%= erb :'comments/index', locals: { commentable: @diary_entry, commentables: "diary_entries" } %>
+
 <!-- Corrections -->
+<div class="row">
 <%= erb :'corrections/index' %>
+</div>

@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <li class="list-group-item">
+    <%= comment.content %>
+
+  <span class="badge">
+    Written by <a href="/profiles/<%= comment.profile.id %>"><%= comment.profile.name %></a> on <%= format_date comment.created_at %>
+   </span>
+  </li>
+</ul>

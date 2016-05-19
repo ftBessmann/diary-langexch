@@ -3,5 +3,8 @@
 <div id="corrections-container">
 <% @diary_entry.corrections.sort_by { |correction| correction.created_at }.each do |correction| %>
   <%= erb :'diary_entries/_entry', locals: { correction: correction } %>
+
+<%= erb :'comments/index', locals: {commentable: correction, commentables: "corrections" } %>
 <% end %>
+
 </div>
