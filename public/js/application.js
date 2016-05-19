@@ -14,7 +14,7 @@ $(document).ready(function() {
   	$('#correction-form').show();
 
   	// how to remove extra space ???
-  	$('#correction-form-content').html($('#diary-entry-content').text())
+  	$('#correction-form-content').html($.trim($('#diary-entry-content').text()))
   });
 
   // Cancels the correction form (hides it and brings back correction button)
