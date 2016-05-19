@@ -53,7 +53,7 @@ end
 # Create fake users & their profiles
 100.times do
 	# Make a new user
-	user = User.new(
+	user = User.create(
 		username: Faker::Internet.user_name,
 		password: "1",
 		#password: Faker::Internet.password,
@@ -61,23 +61,20 @@ end
 	)
 
 	# Make a new profile
-	profile = Profile.new(
+	profile = Profile.create(
 		name: fake_name,
 		birthday: Faker::Date.between(70.years.ago, 18.years.ago),
 		gender: ["male", "female"].sample,
 		country: Country.all.sample,
 		avatar_url: Faker::Avatar.image,
-		description: fake_description
+		description: fake_description,
+		user: user
 	)
 
 	# Make a diary for the profile
-	diary = Diary.new
-	diary.profile = profile
-
-	# Attach profile to user and save it
-	user.profile = profile
-	user.save
-	diary.save
+	diary = Diary.create(
+		profile: profile
+	)
 end
 
 # Generate fake diary entries
@@ -101,9 +98,12 @@ end
 end
 
 1000.times do
-	polymorphic_array = [Correction.all.sample, DiaryEntry.all.sample]
-	polymorphic_array.sample.comments << Comment.new(
-		content: Faker::Lorem.sentence(4)
+	entry = [Correction.all.sample, DiaryEntry.all.sample].sample
+
+	Comment.create(
+		content: Faker::Lorem.sentence(4),
+		commentable: entry,
+		profile: Profile.all.sample
 	)
 
 end
