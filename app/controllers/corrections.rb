@@ -8,7 +8,7 @@ post '/diary_entries/:id/corrections' do
   @correction.content = @correction.diary_entry.compare_with(@correction)
 
   if @correction.save
-    erb :'diary_entries/_entry',
+    erb :'corrections/show',
         layout: !request.xhr?,
         locals: { correction: @correction }
   else
