@@ -27,3 +27,16 @@ post '/diary_entries/:id/corrections' do
 		end
 	end
 end
+
+# Route to like/unlike a diary entry
+post '/diary_entries/:id/like' do
+	@diary_entry = DiaryEntry.find_by(id: params[:id])
+	like = @diary_entry.likes.find { |like| like.profile == current_user.profile }
+	
+	if like
+		like.destroy
+	else
+		Like.create(likeable: @diary_entry, profile: current_user.profile)
+	end
+	redirect "#{params[:source]}"
+end
