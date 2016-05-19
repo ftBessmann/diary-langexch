@@ -12,7 +12,7 @@ $(document).ready(function() {
   $('#correction-button').on('click', function() {
   	$(this).hide();
   	$('#correction-form').show();
-  	
+
   	// how to remove extra space ???
   	$('#correction-form-content').html($('#diary-entry-content').text())
   });
@@ -35,17 +35,19 @@ $(document).ready(function() {
   		context: $(this)
   	});
 
-  	
+
   	request.done(function(response) {
   		console.log(response);
   		$('#corrections-container').append(response);
   		console.log(this);
-  		$(this).hide();
-  		// Makes sure to clear up the form
-  		$('#correction-button').show();
+      // Removes the new correction form because a profile can only make
+      // one correction for a given diary entry
+  		$(this).remove();
+
+      // The correct-entry button remains hidden
   	});
 
-  });	
+  });
 
   $('#diary-entry').on('submit', '.like-form', function(e) {
     e.preventDefault();
@@ -70,7 +72,7 @@ $(document).ready(function() {
       else {
         $(this).find('.like-btn').addClass('btn-primary');
       }
-      
+
     });
   });
 });

@@ -32,4 +32,8 @@ class Profile < ActiveRecord::Base
   def set_avatar_url
     self.avatar_url ||= "/images/default_avatar.jpg"
   end
+
+  def has_correction?(diary_entry)
+    self.corrections.find { |correction| correction.diary_entry == diary_entry }
+  end
 end
