@@ -12,6 +12,8 @@ class Profile < ActiveRecord::Base
   has_one :diary
   belongs_to :country
 
+  has_many :likes
+
   validates :name, presence: true
   validates :gender, presence: true
   validates :country, presence: true
