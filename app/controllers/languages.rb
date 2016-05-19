@@ -1,3 +1,4 @@
+# Lists all the languages in the system
 get '/languages' do
 	@languages = Language.all
 

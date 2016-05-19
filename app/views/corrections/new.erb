@@ -1,0 +1,11 @@
+<div class="row">
+  <form id="correction-form" action="/diary_entries/<%= @diary_entry.id %>/corrections" method="post" class="form-horizontal">
+    <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+      <textarea class="form-control" rows="12" cols="80" id="correction-form-content" name="correction[content]"></textarea>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <button type="submit" class="btn btn-success">Correct</button>
+      <button id="cancel-correction-button" class="btn btn-danger">Cancel</button>
+    </div>
+  </form>
+</div>

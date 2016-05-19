@@ -1,3 +1,4 @@
+# Lists all the diaries in the system
 get '/diaries' do
 	@diaries = Diary.all
 
@@ -18,6 +19,7 @@ get '/diaries/:id/diary_entries/new' do
 	erb :'diary_entries/new'
 end
 
+# Creates a new diary entry
 post '/diaries/:id/diary_entries' do
   p "hit post route"
   @diary_entry = DiaryEntry.new(params[:diary_entry])

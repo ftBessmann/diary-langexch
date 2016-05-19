@@ -1,3 +1,4 @@
+# Lists all the profiles in the system
 get '/profiles' do
 	#@profiles = Profile.all
 	@profiles = Profile.paginate(page: params[:page], per_page: 10)
@@ -5,12 +6,14 @@ get '/profiles' do
 	erb :'profiles/index'
 end
 
+# Display a specific profile
 get '/profiles/:id' do
 	@profile = Profile.find_by(id: params[:id])
 
 	erb :'profiles/show'
 end
 
+# Form to edit a profile
 get '/profiles/:id/edit' do
   @profile = Profile.find(params[:id])
   @countries = Country.all
