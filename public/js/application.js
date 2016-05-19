@@ -40,11 +40,11 @@ $(document).ready(function() {
   		console.log(response);
   		$('#corrections-container').append(response);
   		console.log(this);
-  		$(this).hide();
-  		// Makes sure to clear up the form
-
-      // The correct-entry button remains hidden because a profile can only make
+      // Removes the new correction form because a profile can only make
       // one correction for a given diary entry
+  		$(this).remove();
+
+      // The correct-entry button remains hidden
   	});
 
   });
