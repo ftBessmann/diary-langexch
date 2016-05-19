@@ -4,4 +4,47 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+
+  // Have the correction form initially hidden
+  $('#correction-form').hide();
+
+  // Brings up the correction form when asked
+  $('#correction-button').on('click', function() {
+  	$(this).hide();
+  	$('#correction-form').show();
+  	
+  	// how to remove extra space ???
+  	$('#correction-form-content').html($('#diary-entry-content').text())
+  });
+
+  // Cancels the correction form (hides it and brings back correction button)
+  $('#cancel-correction-button').on('click', function(e) {
+  	e.preventDefault();
+  	$('#correction-form').hide();
+  	$('#correction-button').show();
+  });
+
+  // Submits corrected entry to the server
+  $('#correction-form').on('submit', function(e) {
+  	e.preventDefault();
+
+  	var request = $.ajax({
+  		method: $(this).attr('method'),
+  		url: $(this).attr('action'),
+  		data: $(this).serialize(),
+  		context: $(this)
+  	});
+
+  	
+  	request.done(function(response) {
+  		console.log(response);
+  		$('#corrections-container').append(response);
+  		console.log(this);
+  		$(this).hide();
+  		// Makes sure to clear up the form
+  		$('#correction-form').find("textarea[name='correction[content]']").html("")
+  		$('#correction-button').show();
+  	});
+
+  });	
 });
