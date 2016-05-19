@@ -26,9 +26,13 @@
 
 <!-- Correct Entry Button -->
 <button id="correction-button" class="btn btn-primary">Correct Entry</button>
-
 <!-- Correction Form -->
 <%= erb :'corrections/new' %>
 
+<!-- Comments for Diary Entry -->
+<%= erb :'comments/index', locals: { commentable: @diary_entry, commentables: "diary_entries" } %>
+
 <!-- Corrections -->
+<div class="row">
 <%= erb :'corrections/index' %>
+</div>
