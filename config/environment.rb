@@ -24,6 +24,8 @@ require "will_paginate-bootstrap"
 require 'will_paginate/active_record'
 require 'date'
 require 'htmldiff'
+require 'meetup_client'
+require 'httparty'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))

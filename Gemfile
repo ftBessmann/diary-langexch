@@ -25,6 +25,9 @@ gem 'will_paginate-bootstrap'
 
 gem 'htmldiff'
 
+gem 'meetup_client'
+gem 'httparty'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
